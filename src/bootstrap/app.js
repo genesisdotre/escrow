@@ -11,11 +11,16 @@ import New from '../containers/arbitrable-tx/new'
 import Resume from '../containers/arbitrable-tx/resume'
 import Footer from '../components/footer'
 import Notifications from '../containers/settings'
+import GlobalMap from '../containers/home'
 import { ReactComponent as Kleros } from '../assets/kleros.svg'
+import { ReactComponent as Logo } from '../assets/logo-updated.png'
 import { ReactComponent as Transaction } from '../assets/transaction.svg'
 import { ReactComponent as Envelope } from '../assets/envelope.svg'
 import { ReactComponent as Invoice } from '../assets/invoice.svg'
 import { ReactComponent as World } from '../assets/worldwide.svg'
+
+
+import logoUpdated from '../assets/logo-updated.png'
 
 import './app.css'
 
@@ -24,7 +29,7 @@ const NotFound = () => <div>Sorry, nothing here.</div>
 const Main = ({ children }) => (
   <div className="App">
     <header className="header">
-      <Kleros
+      {/* <Kleros
         className="logo"
         onClick={() => navigate('/')}
         style={{
@@ -34,7 +39,23 @@ const Main = ({ children }) => (
           width: 'auto',
           height: '46px'
         }}
+      /> */}
+
+      <img
+        className="logo"
+        alt="Logo updated"
+        src={logoUpdated}
+        onClick={() => navigate('/')}
+        style={{
+          position: 'relative',
+          top: '8px',
+          left: '20px',
+          width: 'auto',
+          height: '46px'
+        }}
       />
+
+
       <input className="menu-btn" type="checkbox" id="menu-btn" />
       <label className="menu-icon" htmlFor="menu-btn">
         <span className="navicon" />
@@ -115,6 +136,7 @@ const App = ({ store }) => (
             <ArbitrableTx path="/contract/:contract/payment/:arbitrableTxId" />
             <Notifications path="/notifications" />
             <Resume path="/:type/:metaEvidenceIPFSHash" />
+            <GlobalMap path="/global-map" />
             <NotFound default />
           </Main>
         </Router>

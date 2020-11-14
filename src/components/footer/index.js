@@ -12,25 +12,16 @@ import './footer.css'
 const Footer = () => (
   <div className='footer'>
       <div className='footer-left'>
-        <a href="https://kleros.io">Find out more about Kleros</a>
+        <a href="https://docs.google.com/document/d/1g6P7GYGm5KMkElDYViqfm8W3992ok1RgHqAqQ677nBo/edit?usp=sharing">Google Doc proposal</a>
       </div>
       <div className='footer-center'>
-        Powered By Kleros
+        Powered By Kleros Hackathon
       </div>
       <div className='footer-right'>
-        <div className='footer-right-help'>
-          <a href="https://t.me/kleros">
-            <div className="footer-right-help-text">
-              I need help
-            </div>
-            <Question className="footer-right-help-icon"/>
-          </a>
-        </div>
         <div className='footer-right-icons'>
-          <a href="https://twitter.com/kleros_io?"><Twitter /></a>
-          <a href="https://github.com/kleros"><Github /></a>
-          <a href="https://blog.kleros.io/"><Ghost /></a>
-          <a href="https://www.linkedin.com/company/kleros/"><LinkedIn /></a>
+          <a href="https://twitter.com/marsXrobertson?"><Twitter /></a>
+          <a href="https://github.com/marsrobertson"><Github /></a>
+          <a href="https://www.linkedin.com/in/marsrobertson/"><LinkedIn /></a>
           <a href="https://t.me/kleros"><Telegram/></a>
         </div>
       </div>
