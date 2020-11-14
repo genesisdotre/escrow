@@ -26,6 +26,10 @@
         'labelTitle labelTitle'
         'inputTitle inputTitle'
         'errorTitle helpTitle'
+        'labelLocationstart labelLocationstart'
+        'inputLocationstart inputLocationstart'
+        'labelLocationend labelLocationend'
+        'inputLocationend inputLocationend'
         'labelReceiver labelReceiver'
         'inputReceiver inputReceiver'
         'errorReceiver helpReceiver'
@@ -71,6 +75,31 @@
     &-help-title {
       grid-area: helpTitle;
     }
+
+
+
+    &-label-locationstart {
+      grid-area: labelLocationstart;
+    }
+
+    &-input-locationstart {
+      grid-area: inputLocationstart;
+    }
+
+    &-label-locationend {
+      grid-area: labelLocationend;
+    }
+
+    &-input-locationend {
+      grid-area: inputLocationend;
+    }
+
+
+
+
+
+
+
 
     &-help-tips {
       grid-area: helpTips;

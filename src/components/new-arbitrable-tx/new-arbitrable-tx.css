@@ -14,7 +14,7 @@
     .NewArbitrableTx .FormNewArbitrableTx .FormNewArbitrableTx-PaymentDetails {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-areas: 'templateDescription templateDescription' 'labelArbitrableAddresses labelArbitrableAddresses' 'inputArbitrableAddresses inputArbitrableAddresses' 'errorArbitrableAddresses helpArbitrableAddresses' 'labelTitle labelTitle' 'inputTitle inputTitle' 'errorTitle helpTitle' 'labelReceiver labelReceiver' 'inputReceiver inputReceiver' 'errorReceiver helpReceiver' 'labelAmount labelAmount' 'inputAmount inputAmount' 'errorAmount helpAmount' 'labelTimeout labelTimeout' 'inputTimeout inputTimeout' 'errorTimeout helpTimeout' 'labelFile labelFile' 'inputFile inputFile' 'errorFile helpFile'; }
+      grid-template-areas: 'templateDescription templateDescription' 'labelArbitrableAddresses labelArbitrableAddresses' 'inputArbitrableAddresses inputArbitrableAddresses' 'errorArbitrableAddresses helpArbitrableAddresses' 'labelTitle labelTitle' 'inputTitle inputTitle' 'errorTitle helpTitle' 'labelLocationstart labelLocationstart' 'inputLocationstart inputLocationstart' 'labelLocationend labelLocationend' 'inputLocationend inputLocationend' 'labelReceiver labelReceiver' 'inputReceiver inputReceiver' 'errorReceiver helpReceiver' 'labelAmount labelAmount' 'inputAmount inputAmount' 'errorAmount helpAmount' 'labelTimeout labelTimeout' 'inputTimeout inputTimeout' 'errorTimeout helpTimeout' 'labelFile labelFile' 'inputFile inputFile' 'errorFile helpFile'; }
     .NewArbitrableTx .FormNewArbitrableTx-label-arbitrableAddresses {
       grid-area: labelArbitrableAddresses; }
     .NewArbitrableTx .FormNewArbitrableTx-input-arbitrableAddresses {
@@ -31,6 +31,14 @@
       grid-area: errorTitle; }
     .NewArbitrableTx .FormNewArbitrableTx-help-title {
       grid-area: helpTitle; }
+    .NewArbitrableTx .FormNewArbitrableTx-label-locationstart {
+      grid-area: labelLocationstart; }
+    .NewArbitrableTx .FormNewArbitrableTx-input-locationstart {
+      grid-area: inputLocationstart; }
+    .NewArbitrableTx .FormNewArbitrableTx-label-locationend {
+      grid-area: labelLocationend; }
+    .NewArbitrableTx .FormNewArbitrableTx-input-locationend {
+      grid-area: inputLocationend; }
     .NewArbitrableTx .FormNewArbitrableTx-help-tips {
       grid-area: helpTips;
       margin-top: 7px; }

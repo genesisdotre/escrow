@@ -170,6 +170,33 @@ const NewArbitrableTx = ({ formArbitrabletx, accounts, balance, tokens, template
                         <br />
                         Funds will stay in the escrow until the payment is completed.
                       </div>
+
+
+                      <label
+                        htmlFor="locationstart"
+                        className="FormNewArbitrableTx-label FormNewArbitrableTx-label-locationstart"
+                      >
+                        Port of origin
+                      </label>
+                      <Field
+                        name="locationstart"
+                        id="locationstart"
+                        className="FormNewArbitrableTx-input FormNewArbitrableTx-input-locationstart"
+                      />
+
+                      <label
+                        htmlFor="locationend"
+                        className="FormNewArbitrableTx-label FormNewArbitrableTx-label-locationend"
+                      >
+                        Port of destination
+                      </label>
+                      <Field
+                        name="locationend"
+                        id="locationend"
+                        className="FormNewArbitrableTx-input FormNewArbitrableTx-input-locationend"
+                      />
+
+
                       <label
                         htmlFor="timeout"
                         className="FormNewArbitrableTx-label FormNewArbitrableTx-label-timeout"
