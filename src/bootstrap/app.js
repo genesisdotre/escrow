@@ -15,6 +15,7 @@ import { ReactComponent as Kleros } from '../assets/kleros.svg'
 import { ReactComponent as Transaction } from '../assets/transaction.svg'
 import { ReactComponent as Envelope } from '../assets/envelope.svg'
 import { ReactComponent as Invoice } from '../assets/invoice.svg'
+import { ReactComponent as World } from '../assets/worldwide.svg'
 
 import './app.css'
 
@@ -39,6 +40,25 @@ const Main = ({ children }) => (
         <span className="navicon" />
       </label>
       <ul className="menu">
+      <li
+          className="menu-transaction"
+          onClick={() => navigate('/global-map')}
+        >
+          <span className="btn-new" style={{
+              background: "#1E075F",
+              border: "1px solid white"
+            }}>
+            <World
+              style={{
+                position: 'relative',
+                top: '7px',
+                height: '24px',
+                marginRight: '10px'
+              }}
+            />
+            Global Map
+          </span>
+        </li>
         <li
           className="menu-transaction"
           onClick={() => navigate('/new/invoice')}
