@@ -172,7 +172,7 @@ const NewArbitrableTx = ({ formArbitrabletx, accounts, balance, tokens, template
                       </div>
 
 
-                      <label
+                      {/* <label
                         htmlFor="locationstart"
                         className="FormNewArbitrableTx-label FormNewArbitrableTx-label-locationstart"
                       >
@@ -194,7 +194,7 @@ const NewArbitrableTx = ({ formArbitrabletx, accounts, balance, tokens, template
                         name="locationend"
                         id="locationend"
                         className="FormNewArbitrableTx-input FormNewArbitrableTx-input-locationend"
-                      />
+                      /> */}
 
 
                       <label
@@ -321,6 +321,7 @@ const NewArbitrableTx = ({ formArbitrabletx, accounts, balance, tokens, template
                             rows={8}
                             id={inputKey}
                             className="FormNewArbitrableTx-input FormNewArbitrableTx-ExtraDetails-input"
+                            value={template.optionalInputs[inputKey].initialValue}
                             onChange={(e) => {
                               const _extraData = values.extraData
                               const _substitutions = values.substitutions

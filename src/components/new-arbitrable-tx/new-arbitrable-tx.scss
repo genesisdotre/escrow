@@ -78,21 +78,21 @@
 
 
 
-    &-label-locationstart {
-      grid-area: labelLocationstart;
-    }
+    // &-label-locationstart {
+    //   grid-area: labelLocationstart;
+    // }
 
-    &-input-locationstart {
-      grid-area: inputLocationstart;
-    }
+    // &-input-locationstart {
+    //   grid-area: inputLocationstart;
+    // }
 
-    &-label-locationend {
-      grid-area: labelLocationend;
-    }
+    // &-label-locationend {
+    //   grid-area: labelLocationend;
+    // }
 
-    &-input-locationend {
-      grid-area: inputLocationend;
-    }
+    // &-input-locationend {
+    //   grid-area: inputLocationend;
+    // }
 
 
 
@@ -255,6 +255,7 @@
     &-ExtraDetails-input {
       width: 100%;
       margin-top: 12px;
+      font-family: monospace;
     }
 
     &-error {
