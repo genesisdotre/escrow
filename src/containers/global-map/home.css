@@ -1,0 +1,8 @@
+.Home h1 {
+  font-weight: bold;
+  font-size: 2em;
+  color: white; }
+
+.Home #iframe {
+  width: 92vw;
+  height: 70vh; }
