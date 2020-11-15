@@ -1,4 +1,11 @@
+
+![](https://raw.githubusercontent.com/genesisdotre/globaltrade/hackathon/cover-image.png)
+
+
 # Global Trade Kleros Hackathon Decentralized Escrow
+
+
+![](https://raw.githubusercontent.com/genesisdotre/globaltrade/hackathon/animation.gif)
 
 Google Doc with research: https://docs.google.com/document/d/1g6P7GYGm5KMkElDYViqfm8W3992ok1RgHqAqQ677nBo/edit?usp=sharing
 
