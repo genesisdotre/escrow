@@ -2,8 +2,15 @@
 ![](https://raw.githubusercontent.com/genesisdotre/globaltrade/hackathon/cover-image.png)
 
 
-# Global Trade Kleros Hackathon Decentralized Escrow
+# Global Trade Kleros Hackathon
 
+## What Gets Measured Gets Improved 
+
+Putting CO2 emissions tracking on the blockchain.
+
+We can track COVID, we can track global trade.
+
+`2m24s` walkthrough on YouTube: https://youtu.be/OoYlr_u0APk
 
 ![](https://raw.githubusercontent.com/genesisdotre/globaltrade/hackathon/animation.gif)
 
@@ -15,4 +22,10 @@ Live URL: https://global-trade-kleros-hackathon-demo.netlify.app/
 
 ### Development
 
-Need to use node 10. Recommending [`nvm`](https://github.com/nvm-sh/nvm)
+Need to use node 10. 
+
+Recommending [`nvm`](https://github.com/nvm-sh/nvm)
+
+Technologies used:
+* Geolocation API: https://developers.google.com/maps/documentation/geolocation/overview
+* https://miniature.earth/
