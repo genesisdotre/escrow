@@ -5,9 +5,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 
-<script src="miniature.earth.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/ethers@5.0.17/dist/ethers.umd.js" type="text/javascript"></script>
+<script src="miniature.earth.js"></script>
+
 
 <style>
 
@@ -38,6 +40,7 @@ stop2 = {lat: 51.5073509, lng: -0.1277583}
 
 var myoverlay;
 
+// We just assume this will happen faster!
 window.addEventListener( "earthjsload", function() {
 	
 	myearth = new Earth( 'myearth', {
@@ -51,14 +54,30 @@ window.addEventListener( "earthjsload", function() {
 	} );
 
 	myearth.addEventListener( "ready", function() {
-		loadLocations();
-	} );
+		
+	});
 
 } );
 
+let LOADED = false;
 function loadLocations() {
+	LOADED = true;
 	let flightScale = 1;
 	let duration = 1;
+
+	for (let i=0; i<placemarks.length; i++) {
+
+
+
+		
+	}
+
+
+
+
+
+
+	
 	let distance1 = Earth.getDistance( start1, stop1 );
 
 	dashedLine1 = myearth.addLine( {
@@ -135,11 +154,6 @@ function loadLocations() {
 
 	});
 
-
-
-
-
-
 	function animateLine() {
 		dashedLine1.dashOffset -= 0.001; // animate dashed line
 		dashedLine2.dashOffset -= 0.001; // animate dashed line
@@ -159,6 +173,8 @@ function loadLocations() {
 <div id="myearth"></div>
 
 <script>
+
+	placemarks = [];
 
     ABI = [{"constant":true,"inputs":[],"name":"arbitratorExtraData","outputs":[{"name":"","type":"bytes"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"disputeIDtoTransactionID","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_disputeID","type":"uint256"},{"name":"_ruling","type":"uint256"}],"name":"rule","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_transactionID","type":"uint256"}],"name":"timeOutByReceiver","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"arbitrator","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_transactionID","type":"uint256"}],"name":"payArbitrationFeeByReceiver","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_transactionID","type":"uint256"}],"name":"payArbitrationFeeBySender","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_transactionID","type":"uint256"}],"name":"appeal","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"transactions","outputs":[{"name":"sender","type":"address"},{"name":"receiver","type":"address"},{"name":"amount","type":"uint256"},{"name":"timeoutPayment","type":"uint256"},{"name":"disputeId","type":"uint256"},{"name":"senderFee","type":"uint256"},{"name":"receiverFee","type":"uint256"},{"name":"lastInteraction","type":"uint256"},{"name":"status","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getCountTransactions","outputs":[{"name":"countTransactions","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_transactionID","type":"uint256"},{"name":"_evidence","type":"string"}],"name":"submitEvidence","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"feeTimeout","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_timeoutPayment","type":"uint256"},{"name":"_receiver","type":"address"},{"name":"_metaEvidence","type":"string"}],"name":"createTransaction","outputs":[{"name":"transactionID","type":"uint256"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_transactionID","type":"uint256"}],"name":"executeTransaction","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_transactionID","type":"uint256"},{"name":"_amount","type":"uint256"}],"name":"pay","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_transactionID","type":"uint256"}],"name":"timeOutBySender","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_address","type":"address"}],"name":"getTransactionIDsByAddress","outputs":[{"name":"transactionIDs","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_transactionID","type":"uint256"},{"name":"_amountReimbursed","type":"uint256"}],"name":"reimburse","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_arbitrator","type":"address"},{"name":"_arbitratorExtraData","type":"bytes"},{"name":"_feeTimeout","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_metaEvidenceID","type":"uint256"},{"indexed":false,"name":"_evidence","type":"string"}],"name":"MetaEvidence","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_transactionID","type":"uint256"},{"indexed":false,"name":"_amount","type":"uint256"},{"indexed":false,"name":"_party","type":"address"}],"name":"Payment","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_transactionID","type":"uint256"},{"indexed":false,"name":"_party","type":"uint8"}],"name":"HasToPayFee","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_arbitrator","type":"address"},{"indexed":true,"name":"_evidenceGroupID","type":"uint256"},{"indexed":true,"name":"_party","type":"address"},{"indexed":false,"name":"_evidence","type":"string"}],"name":"Evidence","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_arbitrator","type":"address"},{"indexed":true,"name":"_disputeID","type":"uint256"},{"indexed":false,"name":"_metaEvidenceID","type":"uint256"},{"indexed":false,"name":"_evidenceGroupID","type":"uint256"}],"name":"Dispute","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_arbitrator","type":"address"},{"indexed":true,"name":"_disputeID","type":"uint256"},{"indexed":false,"name":"_ruling","type":"uint256"}],"name":"Ruling","type":"event"}];
 
@@ -181,39 +197,41 @@ function loadLocations() {
     //   });
 
       evidences = await contract.queryFilter("MetaEvidence", 22107630); // deployment block
-
-      console.log(evidences);
+	  console.log(evidences);
+	  
+	  let retrievedCounter = 0;
 
       for (let i=0; i<evidences.length; i++) {
-        let IPFSURL = "https://ipfs.kleros.io" +  evidences[i].args[1];
+		placemarks[i] = {};
 
-        console.log(IPFSURL);
-
-        console.log("THE i is " + i)
+        let IPFSURL = "https://ipfs.kleros.io" +  evidences[i].args[1]; // console.log(IPFSURL);
 
         $.get(IPFSURL, function(result) {
-
 
             // HACK HACK HACK
             result.extraData["Contract Information"] = result.extraData["Contract Information"].replace("Poland", "\"Poland\",").replace("London", "\"London\",").replace("New York", "\"New York\",");
 
             try {
                 let locationData = JSON.parse(result.extraData["Contract Information"]);
-                console.log(locationData);
+				console.log(locationData);
+				
+				placemarks[i].description = JSON.stringify(locationData, false, 2);
+
+
 
                 let MAPURL_origin =      "https://maps.googleapis.com/maps/api/geocode/json?address=" + locationData.origin +      "&key=" + MAPS_API_KEY;
                 let MAPURL_destination = "https://maps.googleapis.com/maps/api/geocode/json?address=" + locationData.destination + "&key=" + MAPS_API_KEY;
 
                 $.get(MAPURL_origin, function(result) {
-                    console.log(result);
-
-                    console.log(result.results[0].geometry.location);
+                    // console.log(result);
+					// console.log(result.results[0].geometry.location);
+					placemarks[i].origin = result.results[0].geometry.location
                 })
 
                 $.get(MAPURL_destination, function(result) {
-                    console.log(result);
-
-                    console.log(result.results[0].geometry.location);
+                    // console.log(result);
+					// console.log(result.results[0].geometry.location);
+					placemarks[i].destination = result.results[0].geometry.location;
                 })
 
 
@@ -221,21 +239,29 @@ function loadLocations() {
             } catch {
                 console.error("Wrong format " + IPFSURL);
                 console.error(result);
-            }
+            } finally {
+				retrievedCounter++;
+				if (retrievedCounter === evidences.length) {
+					console.log(placemarks);
+					loadLocations();
+				}
+			}
 
             
-        })
-
-
-
-        
+        })  
       }
-
-
-
     }
 
-    init();
+	init();
+	
+	// MICROHACK IN CASE ASYNC GOES BAD... Not tested
+	let interval = setInterval(function() {
+		if (!LOADED) {
+			loadLocations();
+		} else {
+			clearInterval(interval);
+		}
+	}, 1000)
 
   </script>
 
