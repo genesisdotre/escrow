@@ -24,8 +24,10 @@
 	}
 
 	.overlay {
+		padding: 20px;
+		font-size: 1.2em;;
 		background: rgba(255,255,255,0.7);
-		width: 400px;
+		width: 300px;
 		height: 200px;
 	}
 </style>
@@ -59,107 +61,96 @@ window.addEventListener( "earthjsload", function() {
 
 } );
 
-let LOADED = false;
 function loadLocations() {
-	LOADED = true;
 	let flightScale = 1;
 	let duration = 1;
 
 	for (let i=0; i<placemarks.length; i++) {
+		// REQUIRE ALL DATA CORRECT
+		if (!placemarks[i].origin || !placemarks[i].destination || !placemarks[i].description ) {
+			continue;
+			// If data is crap, then do nothign
+		}
 
 
 
+		// SAVING ME SOME EFFORT WITH COPY PASTE
+		let start1 = placemarks[i].origin;
+		let stop1 = placemarks[i].destination;
+
+		let distance = Earth.getDistance( placemarks[i].origin, placemarks[i].destination );
+
+		let dashedLine = myearth.addLine( {
+			locations: [ placemarks[i].origin, placemarks[i].destination ],
+			color : "red",
+			width: 1.25 * flightScale,
+			offsetFlow: flightScale,
+			dashed: true,
+			dashSize: 0.1 * flightScale,
+			dashRatio : 0.5,
+			clip: 0,
+			alwaysBehind: true
+		} );
 		
-	}
+		dashedLine.animate( 'clip', 1, { duration: 1000 + distance/10 } );
 
 
 
+		placemarks[i].dashedLine = dashedLine;
 
-
-
-	
-	let distance1 = Earth.getDistance( start1, stop1 );
-
-	dashedLine1 = myearth.addLine( {
-		locations: [ start1, stop1 ],
-		color : "red",
-		width: 1.25 * flightScale,
-		offsetFlow: flightScale,
-		dashed: true,
-		dashSize: 0.1 * flightScale,
-		dashRatio : 0.5,
-		clip: 0,
-		alwaysBehind: true
-	} );
-	
-	dashedLine1.animate( 'clip', 1, { duration: 1000 + distance1/10 } );
-
-
-
-	let distance2 = Earth.getDistance( start2, stop2 );
-
-	dashedLine2 = myearth.addLine( {
-		locations: [ start2, stop2 ],
-		color : "red",
-		width: 1.25 * flightScale,
-		offsetFlow: flightScale,
-		dashed: true,
-		dashSize: 0.1 * flightScale,
-		dashRatio : 0.5,
-		clip: 0,
-		alwaysBehind: true,
-	} );
-	
-	dashedLine2.animate( 'clip', 1, { duration: 1000 + distance2/10 } );
-
-	// dashedLine2.addEventListener( "click", function() {
-	// 	console.log("click");
-	// });
-
-
-	let sprite = myearth.addSprite( {
+		let sprite = myearth.addSprite( {
 			location : { lat: (start1.lat + stop1.lat) / 2, lng: (start1.lng + stop1.lng) / 2 },
 			offset: 1,
 			color: 'red',
 			scale: 0.3,
 			hotspot: true
-	} );
-
-	sprite.addEventListener( "click", function() {
-
-		if (myoverlay ) {
-			myoverlay.remove();
-			myoverlay = null;
-		} else {
-			myoverlay = myearth.addOverlay( {
-				location: { lat: (start1.lat + stop1.lat) / 2, lng: (start1.lng + stop1.lng) / 2 },
-				content : '<div class="overlay"><strong> New York </strong></div>',
-				className : 'my-text-overlay',
-				depthScale : 0.5
-			} );
-		}
-
-
-		myearth.addEventListener( "change", function() {
-		
-			// if ( ! current_marker || auto_rotate ) return;
-
-			if ( myoverlay && Earth.getAngle( myearth.location, myoverlay.location ) > 45 ) {
-				myoverlay.remove();
-				myoverlay = null;
-			}
-			
 		} );
 
+		placemarks[i].sprite = sprite;
 
-	});
+
+		sprite.addEventListener( "click", function() {
+
+			if (placemarks[i].myoverlay ) {
+				placemarks[i].myoverlay.remove();
+				placemarks[i].myoverlay = null;
+			} else {
+				myoverlay = myearth.addOverlay( {
+					location: { lat: (start1.lat + stop1.lat) / 2, lng: (start1.lng + stop1.lng) / 2 },
+					content : '<div class="overlay"><pre>' + placemarks[i].description + '</pre></div>',
+					className : 'my-text-overlay',
+					depthScale : 0.5
+				} );
+
+				placemarks[i].myoverlay = myoverlay;
+			}
+		});
+
+		// NOT CLOSING
+		// myearth.addEventListener( "change", function() {
+		// 	for (let i=0; i<placemarks.length; i++) {
+		// 		if ( placemarks[i].myoverlay && Earth.getAngle( myearth.location, placemarks[i].myoverlay.location ) > 60 ) {
+		// 			placemarks[i].myoverlay.remove();
+		// 			placemarks[i].myoverlay = null;
+		// 		}
+		// 	}
+		// } );
+
+
+
+
+		myearth.addEventListener( "update", animateLine );
+
+	}
 
 	function animateLine() {
-		dashedLine1.dashOffset -= 0.001; // animate dashed line
-		dashedLine2.dashOffset -= 0.001; // animate dashed line
+		for (let i=0; i<placemarks.length; i++) {
+			if (placemarks[i].dashedLine) {
+				placemarks[i].dashedLine.dashOffset -= 0.001; // animate dashed line
+			}	
+		}
 	}
 	
-	myearth.addEventListener( "update", animateLine );
 
 }
 
@@ -226,43 +217,39 @@ function loadLocations() {
                     // console.log(result);
 					// console.log(result.results[0].geometry.location);
 					placemarks[i].origin = result.results[0].geometry.location
+					retrievedCounter++;
                 })
 
                 $.get(MAPURL_destination, function(result) {
                     // console.log(result);
 					// console.log(result.results[0].geometry.location);
 					placemarks[i].destination = result.results[0].geometry.location;
+					retrievedCounter++;
                 })
 
 
 
             } catch {
-                console.error("Wrong format " + IPFSURL);
-                console.error(result);
-            } finally {
-				retrievedCounter++;
-				if (retrievedCounter === evidences.length) {
-					console.log(placemarks);
-					loadLocations();
-				}
-			}
+                console.warn("Wrong format " + IPFSURL);
+				console.warn(result);
+				retrievedCounter += 2;
+            }
 
             
         })  
-      }
-    }
+	  }
+	  
+		let interval = setInterval(function() {
+			if (retrievedCounter === evidences.length * 2) {
+				loadLocations();
+				clearInterval(interval);
+			}
+		}, 1000)
+
+
+	   }
 
 	init();
-	
-	// MICROHACK IN CASE ASYNC GOES BAD... Not tested
-	let interval = setInterval(function() {
-		if (!LOADED) {
-			loadLocations();
-		} else {
-			clearInterval(interval);
-		}
-	}, 1000)
-
   </script>
 
 </body>
