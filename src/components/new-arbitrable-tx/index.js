@@ -321,7 +321,7 @@ const NewArbitrableTx = ({ formArbitrabletx, accounts, balance, tokens, template
                             rows={8}
                             id={inputKey}
                             className="FormNewArbitrableTx-input FormNewArbitrableTx-ExtraDetails-input"
-                            value={template.optionalInputs[inputKey].initialValue}
+                            defaultValue={template.optionalInputs[inputKey].initialValue}
                             onChange={(e) => {
                               const _extraData = values.extraData
                               const _substitutions = values.substitutions

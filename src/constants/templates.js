@@ -58,9 +58,9 @@ const templates = [
       'Contract Information': {
         type: 'textarea',
         initialValue: `{
-  "origin": 
-  "destination": 
-  "CO2": 
+  "origin": "",
+  "destination": "",
+  "CO2": ""
 }`,
         tip: 'Enter your own terms here. For long contracts, you can use the Agreement Document field above or copy and paste it here.'
       }
