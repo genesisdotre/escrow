@@ -127,7 +127,7 @@ const App = ({ store }) => (
     <Initializer>
       <>
         <Helmet>
-          <title>Kleros · Escrow</title>
+          <title>Global Trade Kleros Hackathon</title>
         </Helmet>
         <Router>
           <Main path="/">
