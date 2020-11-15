@@ -24,18 +24,14 @@ body {
 	width: 64em;
 	max-width: 90%;
 	transition: width 0.5s ease-in-out;
-	min-height: 100vh;
+	/* min-height: calc(100vh - 350px) */
+	height: 600px;
 	font-family: monospace;
 }
 .sidebar-open #wrapper {
 	width: 78em;
 }
 
-
-#main-col {
-	flex: 0 1 70vw;
-	
-}
 
 #side-col {
 	max-width: 0;

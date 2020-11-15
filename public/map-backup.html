@@ -9,21 +9,7 @@
 <script src="airports-and-plane-mesh.js"></script>
 <script src="miniature.earth.js"></script>
 
-<style>
-	.overlay {
-		background: white;
-		width: 400px;
-		height: 200px;
-	}
-</style>
-
 <script>
-
-start1 = {lat: 51.919438, lng: 19.145136}
-stop1 = {lat: 51.5073509, lng: -0.1277583}
-
-start2 = {lat: 40.7127753, lng: -74.0059728}
-stop2 = {lat: 51.5073509, lng: -0.1277583}
 
 window.addEventListener( "earthjsload", function() {
 
@@ -121,95 +107,9 @@ window.addEventListener( "earthjsload", function() {
 		
 		restorePins();
 
-		loadLocations();
-
 	} );
 
 } );
-
-function loadLocations() {
-	let flightScale = 1;
-	let duration = 1;
-	let distance1 = Earth.getDistance( start1, stop1 );
-
-	dashedLine1 = myearth.addLine( {
-		locations: [ start1, stop1 ],
-		color : "red",
-		width: 1.25 * flightScale,
-		offsetFlow: flightScale,
-		dashed: true,
-		dashSize: 0.1 * flightScale,
-		dashRatio : 0.5,
-		clip: 0,
-		alwaysBehind: true
-	} );
-	
-	dashedLine1.animate( 'clip', 1, { duration: 1000 + distance1/10 } );
-
-
-
-	let distance2 = Earth.getDistance( start2, stop2 );
-
-	dashedLine2 = myearth.addLine( {
-		locations: [ start2, stop2 ],
-		color : "red",
-		width: 1.25 * flightScale,
-		offsetFlow: flightScale,
-		dashed: true,
-		dashSize: 0.1 * flightScale,
-		dashRatio : 0.5,
-		clip: 0,
-		alwaysBehind: true,
-		hotspot: true
-	} );
-	
-	dashedLine2.animate( 'clip', 1, { duration: 1000 + distance2/10 } );
-
-	// dashedLine2.addEventListener( "click", function() {
-	// 	console.log("click");
-	// });
-
-
-	let sprite = myearth.addSprite( {
-			location : { lat: (start1.lat + stop1.lat) / 2, lng: (start1.lng + stop1.lng) / 2 },
-			offset: 1,
-			color: 'red',
-			scale: 0.3,
-			hotspot: true
-	} );
-
-	// var mymarker = myearth.addMarker( {
-	// 		location : { lat: (start1.lat + stop1.lat) / 2, lng: (start1.lng + stop1.lng) / 2 },
-	// 		mesh: ['Pin2', 'Needle'],
-	// 		color: 'red',
-	// 		scale: 0.75,
-	// 		hotspot : true
-	// 	} );
-		
-	sprite.addEventListener( "click", function() {
-
-			var myoverlay = myearth.addOverlay( {
-				location: { lat: (start1.lat + stop1.lat) / 2, lng: (start1.lng + stop1.lng) / 2 },
-				content : '<div class="overlay"><strong> New York </strong></div>',
-				className : 'my-text-overlay',
-				depthScale : 0.5
-			} );
-
-
-		} );
-
-
-
-
-
-	function animateLine() {
-		dashedLine1.dashOffset -= 0.001; // animate dashed line
-		dashedLine2.dashOffset -= 0.001; // animate dashed line
-	}
-	
-	myearth.addEventListener( "update", animateLine );
-
-}
 
 
 

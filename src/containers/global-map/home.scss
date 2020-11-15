@@ -1,5 +1,8 @@
 .Home {
 
+    margin-top: 0;
+    margin-bottom: 0;
+
     h1 {
         font-weight: bold;
         font-size: 2em;
@@ -8,6 +11,6 @@
 
     #iframe {
         width: 92vw;
-        height: 70vh;
+        height: calc(100vh - 300px);
     }
 }

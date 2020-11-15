@@ -44,7 +44,7 @@ class GlobalMap extends PureComponent {
     return (
       <div className="Home">
 
-        <iframe id="iframe" src="/map.html"></iframe>
+        <iframe id="iframe" src="/map.html" scrolling="no"></iframe>
 
       </div>
     )

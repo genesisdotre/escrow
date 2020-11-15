@@ -1,8 +1,10 @@
-.Home h1 {
-  font-weight: bold;
-  font-size: 2em;
-  color: white; }
-
-.Home #iframe {
-  width: 92vw;
-  height: 70vh; }
+.Home {
+  margin-top: 0;
+  margin-bottom: 0; }
+  .Home h1 {
+    font-weight: bold;
+    font-size: 2em;
+    color: white; }
+  .Home #iframe {
+    width: 92vw;
+    height: calc(100vh - 300px); }
